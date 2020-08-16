@@ -124,3 +124,7 @@ t1.definetree(e6)
 t1.definetree(e7)
 t1.search(8)
 t1.printtree()
+
+# output
+# Found
+# root,root->left,root->right 10 8 12 6 9 11 13

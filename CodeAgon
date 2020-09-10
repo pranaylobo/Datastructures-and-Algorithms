@@ -1,0 +1,273 @@
+//T-Shape
+
+'use strict';
+
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function(inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function() {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+// Complete the solve function below.
+function solve(grid) {
+    
+    grid.sort()
+    
+    console.log("Ref",grid)
+    
+    
+    
+    var column=[]
+    var rows=[]
+
+    
+    for(var i=0;i<grid.length;i++)
+    {
+        if(column.includes(grid[i][0]) == true)
+            {
+            }
+        else
+            {
+                column.push(grid[i][0])
+            }
+        
+    }
+    
+   console.log(column)
+
+    for(var i=0;i<grid.length;i++)
+    {
+        if(rows.includes(grid[i][1]) == true)
+            {
+            }
+        else
+            {
+                rows.push(grid[i][1])
+            }
+        
+    }
+    
+   console.log(rows)
+    
+    column.sort()
+    rows.sort()
+    
+   var one ={"zero":0,"one":0,"two":0}
+   var two ={"zero":0,"one":0,"two":0}
+   var three ={"zero":0,"one":0,"two":0}
+   
+   var onecount0=[]
+   var onecount1=[]
+   var onecount2=[]
+   
+   var twocount0=[]
+   var twocount1=[]
+   var twocount2=[]
+   
+   var threecount0=[]
+   var threecount1=[]
+   var threecount2=[]
+   
+   
+   for(var i=0;i<grid.length;i++)
+       {
+           
+    switch (grid[i][0]) {
+      case column[0]:
+            
+            
+         console.log("hello",grid[i][1]) 
+            
+            if(grid[i][1] == rows[0])
+                {
+                    console.log("zero")
+                    onecount0.push(1)
+                    one["zero"]=onecount0
+                    
+                }
+            
+            if(grid[i][1] == rows[1])
+                {
+                    console.log("one")
+                    onecount1.push(1)
+                    one["one"]=onecount1
+                }
+            
+            if(grid[i][1] == rows[2])
+                {
+                    console.log("two")
+                    onecount2.push(1)
+                    one["two"]=onecount2
+                }
+            
+            
+        
+        break;
+      case column[1]:
+        console.log( column[1] );
+            // two.push(1)
+            if(grid[i][1] == rows[0])
+                {
+                    console.log("zer0")
+                    twocount0.push(1)
+                    two["zero"]=twocount0
+                    
+                }
+            
+            if(grid[i][1] == rows[1])
+                {
+                    console.log("one")
+                    twocount1.push(1)
+                    two["one"]=twocount1
+                }
+            
+            if(grid[i][1] == rows[2])
+                {
+                    console.log("two")
+                    twocount2.push(1)
+                    two["two"]=twocount2
+                }
+            
+
+
+       
+
+        break;
+      case column[2]:
+            console.log(column[2] );
+            // three.push(1)
+            
+            if(grid[i][1] == rows[0])
+                {
+                    console.log("zer0")
+                    threecount0.push(1)
+                    three["zero"]=threecount0
+                    
+                }
+            
+            if(grid[i][1] == rows[1])
+                {
+                    console.log("one")
+                    threecount1.push(1)
+                    three["one"]=threecount1
+                }
+            
+            if(grid[i][1] == rows[2])
+                {
+                    console.log("two")
+                    threecount2.push(1)
+                    three["two"]=threecount2
+                }
+      
+        break;
+      
+
+    }
+           
+       }
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    var final = [Object.values(one),Object.values(two),Object.values(three)]
+    
+    
+    console.log(one)
+    console.log(two)
+    console.log(three)
+    
+    console.log("final",final)
+
+
+    
+    var temp1=[]
+    
+    temp1.push([ [ 1 ], 0, 0 ], [ [ 1 ], [ 1 ], [ 1 ] ], [ [ 1 ], 0, 0 ]  )
+    
+    // console.log(final)
+    
+    
+    var temp2=[]
+    
+    temp2.push([ 0, [ 1 ], 0 ], [ 0, [ 1 ], 0 ], [ [ 1 ], [ 1 ], [ 1 ] ])
+    
+    var temp3=[]
+    
+    
+    
+    temp3.push([ 0, 0, [ 1 ] ], [ [ 1 ], [ 1 ], [ 1 ] ], [ 0, 0, [ 1 ] ])
+    
+     var temp4=[]
+    
+    temp4.push([ [ 1 ], [ 1 ], [ 1 ] ], [ 0, [ 1 ], 0 ], [ 0, [ 1 ], 0 ] )
+    
+    
+    if(final.toString() == temp1.toString())
+        {
+           return "Yes" 
+        }
+    
+    else if(final.toString() == temp2.toString())
+            {
+            return "Yes"
+            }
+    
+    else if(final.toString() == temp3.toString())
+            {
+            return "Yes"
+            }
+    
+    else if(final.toString() == temp4.toString())
+            {
+            return "Yes"
+            }
+    
+    else
+        {
+            return "No"
+        }
+
+
+}
+
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const t = parseInt(readLine().trim(), 10);
+
+    for (let tItr = 0; tItr < t; tItr++) {
+        let points = Array(5);
+
+        for (let i = 0; i < 5; i++) {
+            points[i] = readLine().replace(/\s+$/g, '').split(' ').map(pointsTemp => parseInt(pointsTemp, 10));
+        }
+
+        const result = solve(points);
+
+        ws.write(result + '\n');
+    }
+
+    ws.end();
+}

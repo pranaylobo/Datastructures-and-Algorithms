@@ -1,0 +1,37 @@
+# import inbuilt standard input output 
+from sys import stdin, stdout 
+from itertools import combinations 
+from functools import reduce
+from operator import ior 
+
+# suppose a function called main() and
+# all the operations are performed
+def main():
+ 
+    # input via readline method
+    n = stdin.readline()
+ 
+    # array input similar method
+    arr = [int(x) for x in stdin.readline().split()]
+ 
+    
+    sum1=[]
+    sum2=0
+
+    # first loop  
+    for i in range(len(arr) + 1):
+        # second loop  
+        for j in range(i + 1, len(arr) + 1): 
+              
+            
+            sum2 = sum2+reduce(lambda x, y: x | y, arr[i:j])
+    print(sum2)
+            
+            
+            
+            
+    
+ 
+# call the main method
+if __name__ == "__main__":
+    main() 

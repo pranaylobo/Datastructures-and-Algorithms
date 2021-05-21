@@ -1,2 +1,1 @@
-# MyPythonDs
-DS in Python
+Data Structures and Algorithm
